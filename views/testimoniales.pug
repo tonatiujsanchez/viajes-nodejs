@@ -2,5 +2,37 @@ extends ./layout/index
 
 block contenido
     main(class="container mt-5")
-            h1 #{pagina} 
-        div(class="row")
+        h1(class="text-center mt-5") #{pagina} 
+        
+        blockquote Nuestros clientes y sus experiancias
+        div(class="row testimoniales")
+            each testimonial in testimoniales
+                div(class="col-md-6 col-lg-4 mb-4")
+                    div(class="card")
+                        div(class="card-body")
+                            blockquote(class="blockquote")
+                            p(class="mb-0") 
+                                | #{ testimonial.mensaje }
+                            footer(class="blockquote-footer")
+                                | #{ testimonial.nombre }
+
+        div(class="row mt-5")
+            div(class="col-md-12")
+                h2(class="d-blok w-100 text-center") Agrega un Testimonial
+                if( errores )
+                    each error in errores
+                        div(class="alert col alert-danger text-center") #{ error.mensaje }
+
+            div(class="row col justify-content-center")
+                div(class="col-md-8")
+                    form(action="/testimoniales" method="POST")
+                        div(class="form-group")
+                            label(for="nombre") Nombre:
+                            input(type="text", id="nombre", value=nombre, placeholder="Ingresa tu nombre", name="nombre", class="form-control" )  
+                        div(class="form-group")
+                            label(for="correo") Correo Electrónico:
+                            input(type="text", id="correo", value=correo placeholder="Ingresa tu correo", name="correo", class="form-control" )  
+                        div(class="form-group")
+                            label(for="mensaje") Mensaje:
+                            textarea(name="mensaje", id="mensaje", placeholder="Mensaje", cols="30", rows="10" class="form-control") #{ mensaje }
+                        input(type="submit" class="btn btn-success btn-block") 
