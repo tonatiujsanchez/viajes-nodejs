@@ -5,16 +5,7 @@ block contenido
         h1(class="text-center mt-5") #{pagina} 
         
         blockquote Nuestros clientes y sus experiancias
-        div(class="row testimoniales")
-            each testimonial in testimoniales
-                div(class="col-md-6 col-lg-4 mb-4")
-                    div(class="card")
-                        div(class="card-body")
-                            blockquote(class="blockquote")
-                            p(class="mb-0") 
-                                | #{ testimonial.mensaje }
-                            footer(class="blockquote-footer")
-                                | #{ testimonial.nombre }
+        include ./layout/testimonialesList
 
         div(class="row mt-5")
             div(class="col-md-12")

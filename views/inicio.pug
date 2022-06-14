@@ -1,6 +1,36 @@
 extends ./layout/index
 
+block slider
+    div(class="slider")
+        h1 Rio de Janeiro
+        em Aventura 
+
 block contenido
     main(class="container mt-5")
-        div(class="row")
-            h1 #{pagina} 
+        h2(class="text-center mb-5") Sobre Nosotros
+        div(class="row mb-5")
+            div(class="col-md-6")
+                p Discover new cultures and have a wonderful rest with Backpack Story! Select the country you’d like to visit and provide our agents with estimated time – they’ll find and offer the most suitable tours and hotels.
+                p During our work we organized countless journeys for our clients. We started as a small tour bureau, and soon we expanded our offers list. Today we have valuable experience travelling and we can advise the most stunning resorts, cities and countries to visit!
+                p Let us curate an inspiring experience as you enjoy a personally-themed adventure with a professional guide catered to your interests. Whether a one-day trip or multi-trip journey, you’ll be privileged to enjoy this ultimate luxury to explore Europe with an expert, as well as the unique bird’s eye views from a helicopter in Europe, including Rome, the Dalmation Coast, Paris, Prague and 20 top destinations.
+
+            div(class="col-md-6")
+                img(src="/img/nosotros_home.jpg", alt="Lago con montañas", class="img-fluid")
+
+        h2(class="text-center my-5") Próximos viajes
+        include ./layout/viajesList
+    section(class="descuento mt-5")
+        div(class="container")
+            div(class="row")
+                div(class="col-md-6")
+                    div(class="contenido")
+                        h3 5% de Descuento
+                        p(class="titulo") Viaje a Canada
+                        p(class="fecha") 20 de marzo del 2022 - 28 de marzo del 2022
+                        p(class="precio") $2,500 USD
+    section(class="container")
+        h2(class="my-5 text-center") Testimoniales
+        include ./layout/testimonialesList
+
+
+                        

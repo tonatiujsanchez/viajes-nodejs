@@ -1,10 +1,25 @@
 import { Testimonial } from "../models/Testimoniales.js"
 import { Viaje } from "../models/Viaje.js"
 
-const paginaInicio = ( req, res )=>{
-    res.render('inicio', {
-        pagina: 'Inicio'
-    })
+const paginaInicio = async( req, res )=>{
+
+    try {
+        // Hacer dos consultas a la vez
+        const [ viajes, testimoniales ] = await Promise.all([
+            Viaje.findAll({limit: 3}), 
+            Testimonial.findAll({limit: 3})
+        ])
+
+        res.render('inicio', {
+            pagina: 'Inicio',
+            clase: 'home',
+            viajes,
+            testimoniales
+        })
+        
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const paginaNostros = ( req, res )=>{
